@@ -20,6 +20,7 @@ grammar = Grammar(
     """
 )
 
+
 class PrisonVisitor(NodeVisitor):
     def visit_expr(self, node, visited_children):
         output = {}
@@ -32,9 +33,7 @@ class PrisonVisitor(NodeVisitor):
     def visit_block(self, node, visited_children):
         # BEGIN, ws, name, ws, exprs, ws, end, ws
         _, _, name, _, exprs, _, _ = visited_children
-        return {
-            name: exprs
-        }
+        return {name: exprs}
 
     def visit_emptyline(self, node, visited_children):
         return {}
@@ -64,8 +63,9 @@ class PrisonVisitor(NodeVisitor):
         return visited_children
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     from pprint import pprint
+
     with open("example.prison", "r") as prison_file:
         text = "".join(prison_file.readlines())
         parsed_tree = grammar.parse(text)
