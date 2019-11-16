@@ -64,11 +64,11 @@ class PrisonVisitor(NodeVisitor):
 
 
 if __name__ == "__main__":
-    from pprint import pprint
+    import json
 
     with open("example.prison", "r") as prison_file:
         text = "".join(prison_file.readlines())
         parsed_tree = grammar.parse(text)
         visitor = PrisonVisitor()
         prison_visit = visitor.visit(parsed_tree)
-        pprint(prison_visit)
+        print(json.dumps(prison_visit))
