@@ -88,6 +88,7 @@ class TestParser(unittest.TestCase):
                 "BEGIN outer-section BEGIN inner-section alfa beta END END",
                 {"outer-section": {"inner-section": {"alfa": "beta"}}},
             ],
+            # TODO: More tests, multiple layers nested
         ]
     )
     def test_grammer(self, text, expected_data):
